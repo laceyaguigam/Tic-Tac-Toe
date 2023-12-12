@@ -66,3 +66,10 @@ const drawAlert = () => {
     disableButtons();
     window.alert("It's a Draw!");
 }
+
+//play again
+playButton.addEventListener ("click", () => {
+    count = 0;
+    enableButtons ();
+})
+
