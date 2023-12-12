@@ -31,6 +31,9 @@ const winningPattern = [
     [6, 7, 8],
     [3, 4, 5],
     [2, 4, 6],
+    [0, 4, 8], //
+    [1, 4, 7],
+    
 ];
 
 // Player X turn to start game
