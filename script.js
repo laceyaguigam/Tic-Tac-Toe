@@ -41,3 +41,11 @@ let count = 0;
 const disableButtons = () => {
     gameSquare.forEach ((element) => (element.disabled = true));
 }
+
+//re-enable buttons 
+const enableButtons = () => {
+    gameSquare.forEach ((element) => {
+    element.innerText = "";
+    element.disabled = false;
+}); 
+}
