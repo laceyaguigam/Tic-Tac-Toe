@@ -20,7 +20,7 @@ let gameSquare = document.querySelectorAll('.game-square');
 let playButton = document.getElementById('button-play-again');
 let scoreBoard = document.getElementById('score-board');
 let xScore = document.getElementById('scoreboard-x');
-let yScore = document.getElementById('scoreboard-y');
+let oScore = document.getElementById('scoreboard-y');
 
 
 //winning combinations
@@ -49,3 +49,13 @@ const enableButtons = () => {
     element.disabled = false;
 }); 
 }
+
+//winning alert
+const winAlert = (letter) => {
+    disableButtons();
+    if (letter == "X") {
+        window.alert("Player X Wins!");
+    } else {
+        window.alert("Player O Wins!");
+    }
+};
