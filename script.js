@@ -16,7 +16,10 @@
 let turnTaker = document.getElementById('turn-taker');
 let turn = document.getElementById('turn');
 let gameBoard = document.getElementById('game-board');
+let gameSquare = document.getElementsByClassName('game-square');
 let playButton = document.getElementById('button-play-again');
 let scoreBoard = document.getElementById('score-board');
 let xScore = document.getElementById('scoreboard-x');
 let yScore = document.getElementById('scoreboard-y');
+
+
