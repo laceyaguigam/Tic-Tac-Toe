@@ -16,7 +16,7 @@
 let turnTaker = document.getElementById('turn-taker');
 let turn = document.getElementById('turn');
 let gameBoard = document.getElementById('game-board');
-let gameSquare = document.getElementsByClassName('game-square');
+let gameSquare = document.querySelectorAll('.game-square');
 let playButton = document.getElementById('button-play-again');
 let scoreBoard = document.getElementById('score-board');
 let xScore = document.getElementById('scoreboard-x');
@@ -37,3 +37,7 @@ const winningPattern = [
 let xTurn = true;
 let count = 0;
 
+//disable buttons 
+const disableButtons = () => {
+    gameSquare.forEach ((element) => (element.disabled = true));
+}
