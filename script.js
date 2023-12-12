@@ -57,5 +57,12 @@ const winAlert = (letter) => {
         window.alert("Player X Wins!");
     } else {
         window.alert("Player O Wins!");
-    }
+    } 
 };
+
+//draw alert
+
+const drawAlert = () => {
+    disableButtons();
+    window.alert("It's a Draw!");
+}
