@@ -6,7 +6,7 @@
 // The game should keep track of the state of the game.
 // When the game has been won, it should display a message congratulating the winner (X or O) and no further clicks should be allowed.
 // When a game ends in a tie, it should display a message indicating that a tie has occurred and no further clicks should be allowed.
-// All possible winning combinations for X and O should be accounted for.
+
 // Add a button somewhere that allows the players to play again.
 // You might accomplish this by causing a page refresh or writing some JavaScript code that resets everything on the page.
 // You should keep track of wins for both X and O that persist after a page refresh.
@@ -23,6 +23,7 @@ let xScore = document.getElementById('scoreboard-x');
 let yScore = document.getElementById('scoreboard-y');
 
 
+//winning combinations
 const winningPattern = [
     [0, 1, 2],
     [0, 3, 6],
@@ -31,3 +32,8 @@ const winningPattern = [
     [3, 4, 5],
     [2, 4, 6],
 ];
+
+// Player X turn to start game
+let xTurn = true;
+let count = 0;
+
