@@ -40,7 +40,7 @@ let count = 0;
 //disable buttons 
 const disableButtons = () => {
     gameSquare.forEach ((element) => (element.disabled = true));
-}
+};
 
 //re-enable buttons 
 const enableButtons = () => {
@@ -48,7 +48,7 @@ const enableButtons = () => {
     element.innerText = "";
     element.disabled = false;
 }); 
-}
+};
 
 //winning alert
 const winAlert = (letter) => {
@@ -60,18 +60,11 @@ const winAlert = (letter) => {
     } 
 };
 
-//draw alert
-
-const drawAlert = () => {
-    disableButtons();
-    window.alert("It's a Draw!");
-}
-
 //play again
 playButton.addEventListener ("click", () => {
     count = 0;
     enableButtons ();
-})
+});
 
 // Check for winner
 const checkWin = () => {
@@ -80,11 +73,39 @@ const checkWin = () => {
             gameSquare[i[0]].innerText,
             gameSquare[i[1]].innerText,
             gameSquare[i[2]].innerText,
-        ];
+        ];  //this makes sure all x's or all o's are used to win
         if (element1 != "" &&  (element2 !="") & (element3 != "")) {
             if (element1 == element2 && element2 == element3) {
-                winner(element1);
+                winAlert(element1);
             }
         }
     }
 };
+
+//draw alert       (order of code matters!)
+
+const drawAlert = () => {
+    disableButtons();
+    window.alert("It's a Draw!");
+};
+
+// X/O shown
+gameSquare.forEach((element) => {
+    element.addEventListener("click", () => {
+        if (xTurn) {
+            xTurn = false;
+            element.innerText = "X";  //displays X when square clicked
+            element.disabled = true;
+        } else {
+            xTurn = true;
+            element.innerText = "O";
+            element.disabled = true;
+        }
+        count += 1;
+        if (count == 9) {
+            drawAlert ();
+        } 
+        checkWin();
+    });
+});
+window.onload = enableButtons;
