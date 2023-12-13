@@ -12,7 +12,7 @@ let gameSquare = document.querySelectorAll('.game-square');
 let playButton = document.getElementById('button-play-again');
 let scoreBoard = document.getElementById('score-board');
 let xscoreDisplay = document.getElementById('scoreboard-x');
-let oscoreDisplay = document.getElementById('scoreboard-y');
+let oscoreDisplay = document.getElementById('scoreboard-o');
 
 // score
 
@@ -57,13 +57,14 @@ const enableButtons = () => {
 const winAlert = (letter) => {
     disableButtons();
     if (letter == "X") {
-        xScore++;
-        xscoreDisplay.innerHTML = 'X: ' + xScore;
+        xScore++; //adds the score
+        xscoreDisplay.innerHTML = 'X: ' + xScore; //displays the score 
         window.alert("Player X Wins!");
     } else {
+        window.alert("Player O Wins!");
         oScore++;
         oscoreDisplay.innerHTML = '0: ' + oScore;
-        window.alert("Player O Wins!");
+        
     } 
 };
 
@@ -103,12 +104,12 @@ gameSquare.forEach((element) => {
             xTurn = false;
             element.innerText = "X";  //displays X when square clicked
             element.disabled = true;
-            console.log("it's x turn");
+            
         } else {
             xTurn = true;
             element.innerText = "O"; //displays O when square clicked
             element.disabled = true;
-            console.log("it's o turn");
+           
         }
         count += 1;
         if (count == 9) { //counts the used squares when no win pattern 
@@ -118,11 +119,7 @@ gameSquare.forEach((element) => {
     });
 });
 
-// Score
 
-// const updateScore = () => {
-//  for (i = 0; i >= xScore.length; i++)
-// }
 
 //turn
 
