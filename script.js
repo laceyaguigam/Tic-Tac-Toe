@@ -33,12 +33,22 @@ const winningPattern = [
     
 ];
 
+// let currentPlayer = "X";
+
+// function updatePlayer() {
+//     currentPlayer = (currentPlayer == "X") ? "O" : "X";  //this assigns the player either x or o 
+//     statusText.textContent = currentPlayer + "'s turn";
+// }
+
 
 
 
 // Player X turn to start game
  let xTurn = true;
  let count = 0;
+
+  
+
 
 //disable buttons 
 const disableButtons = () => {
@@ -53,6 +63,8 @@ const enableButtons = () => {
 }); 
 };
 
+
+
 //winning alert
 const winAlert = (letter) => {
     disableButtons();
@@ -60,10 +72,16 @@ const winAlert = (letter) => {
         xScore++; //adds the score
         xscoreDisplay.innerHTML = 'X: ' + xScore; //displays the score 
         window.alert("Player X Wins!");
+        
+        let xscore = document.getElementById('scoreboard-x').value;
+        localStorage.setItem("xscore", xscore);
     } else {
         window.alert("Player O Wins!");
         oScore++;
         oscoreDisplay.innerHTML = '0: ' + oScore;
+        
+        let oscore = document.getElementById('scoreboard-o').value;
+        localStorage.setItem("oscore", oscore);
         
     } 
 };
@@ -97,6 +115,13 @@ const drawAlert = () => {
     window.alert("It's a Draw!");
 };
 
+let currentPlayer = "X";
+
+function updatePlayer() {
+    currentPlayer = (currentPlayer == "X") ? "O" : "X";  //this assigns the player either x or o 
+    turn.textContent = currentPlayer + "'s turn";
+};
+
 // X/O shown
 gameSquare.forEach((element) => {
     element.addEventListener("click", () => {
@@ -104,12 +129,12 @@ gameSquare.forEach((element) => {
             xTurn = false;
             element.innerText = "X";  //displays X when square clicked
             element.disabled = true;
-            
+            updatePlayer();
         } else {
             xTurn = true;
             element.innerText = "O"; //displays O when square clicked
             element.disabled = true;
-           
+            updatePlayer();
         }
         count += 1;
         if (count == 9) { //counts the used squares when no win pattern 
@@ -133,5 +158,13 @@ gameSquare.forEach((element) => {
 
 
 
-window.onload = enableButtons;
+window.onload = (event) => {
+    enableButtons;
+  let xscore = localStorage.getItem('xscore'); 
+  document.getElementById('scoreboard-x').value = xscore;
+  localStorage.getItem('oscore'); 
+}
+
+
+
 
