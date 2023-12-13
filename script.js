@@ -1,13 +1,5 @@
-//The player should be able to click on a square and add an X or an O to the square.
-//The player should not be able to choose a square that already has an X or an O.
-// The game should handle automatically switching turns.
 
-// The game should alternate between X and O until the game is over.
 // The game should keep track of the state of the game.
-
-// When a game ends in a tie, it should display a message indicating that a tie has occurred and no further clicks should be allowed.
-
-
 // You might accomplish this by causing a page refresh or writing some JavaScript code that resets everything on the page.
 // You should keep track of wins for both X and O that persist after a page refresh.
 // You may choose to use local or session storage for this.
@@ -19,9 +11,14 @@ let gameBoard = document.getElementById('game-board');
 let gameSquare = document.querySelectorAll('.game-square');
 let playButton = document.getElementById('button-play-again');
 let scoreBoard = document.getElementById('score-board');
-let xScore = document.getElementById('scoreboard-x');
-let oScore = document.getElementById('scoreboard-y');
+let xscoreDisplay = document.getElementById('scoreboard-x');
+let oscoreDisplay = document.getElementById('scoreboard-y');
 
+// score
+
+let xScore = 0;
+let oScore = 0;
+//let turn = 1;
 
 //winning combinations
 const winningPattern = [
@@ -31,14 +28,17 @@ const winningPattern = [
     [6, 7, 8],
     [3, 4, 5],
     [2, 4, 6],
-    [0, 4, 8], //
+    [0, 4, 8], 
     [1, 4, 7],
     
 ];
 
+
+
+
 // Player X turn to start game
-let xTurn = true;
-let count = 0;
+ let xTurn = true;
+ let count = 0;
 
 //disable buttons 
 const disableButtons = () => {
@@ -57,8 +57,12 @@ const enableButtons = () => {
 const winAlert = (letter) => {
     disableButtons();
     if (letter == "X") {
+        xScore++;
+        xscoreDisplay.innerHTML = 'X: ' + xScore;
         window.alert("Player X Wins!");
     } else {
+        oScore++;
+        oscoreDisplay.innerHTML = '0: ' + oScore;
         window.alert("Player O Wins!");
     } 
 };
@@ -99,16 +103,38 @@ gameSquare.forEach((element) => {
             xTurn = false;
             element.innerText = "X";  //displays X when square clicked
             element.disabled = true;
+            console.log("it's x turn");
         } else {
             xTurn = true;
-            element.innerText = "O";
+            element.innerText = "O"; //displays O when square clicked
             element.disabled = true;
+            console.log("it's o turn");
         }
         count += 1;
-        if (count == 9) {
+        if (count == 9) { //counts the used squares when no win pattern 
             drawAlert ();
         } 
         checkWin();
     });
 });
+
+// Score
+
+// const updateScore = () => {
+//  for (i = 0; i >= xScore.length; i++)
+// }
+
+//turn
+
+
+
+
+
+
+
+
+
+
+
 window.onload = enableButtons;
+
