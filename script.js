@@ -1,10 +1,4 @@
 
-// The game should keep track of the state of the game.
-// You might accomplish this by causing a page refresh or writing some JavaScript code that resets everything on the page.
-// You should keep track of wins for both X and O that persist after a page refresh.
-// You may choose to use local or session storage for this.
-
-
 let turnTaker = document.getElementById('turn-taker');
 let turn = document.getElementById('turn');
 let gameBoard = document.getElementById('game-board');
@@ -32,14 +26,6 @@ const winningPattern = [
     [1, 4, 7],
     
 ];
-
-// let currentPlayer = "X";
-
-// function updatePlayer() {
-//     currentPlayer = (currentPlayer == "X") ? "O" : "X";  //this assigns the player either x or o 
-//     statusText.textContent = currentPlayer + "'s turn";
-// }
-
 
 
 
@@ -71,18 +57,19 @@ const winAlert = (letter) => {
     if (letter == "X") {
         xScore++; //adds the score
         xscoreDisplay.innerHTML = 'X: ' + xScore; //displays the score 
+       
         window.alert("Player X Wins!");
         
-        let xscore = document.getElementById('scoreboard-x').value;
-        localStorage.setItem("xscore", xscore);
+        //let xscore = document.getElementById('scoreboard-x').value;
+        localStorage.setItem("xScore", xScore);
     } else {
-        window.alert("Player O Wins!");
+        
         oScore++;
         oscoreDisplay.innerHTML = '0: ' + oScore;
         
-        let oscore = document.getElementById('scoreboard-o').value;
-        localStorage.setItem("oscore", oscore);
-        
+       
+        localStorage.setItem("oScore", oScore);
+        window.alert("Player O Wins!");
     } 
 };
 
@@ -102,6 +89,7 @@ const checkWin = () => {
         ];  //this makes sure all x's or all o's are used to win
         if (element1 != "" &&  (element2 !="") & (element3 != "")) {
             if (element1 == element2 && element2 == element3) {
+               
                 winAlert(element1);
             }
         }
@@ -150,19 +138,11 @@ gameSquare.forEach((element) => {
 
 
 
-
-
-
-
-
-
-
-
 window.onload = (event) => {
-    enableButtons;
-  let xscore = localStorage.getItem('xscore'); 
-  document.getElementById('scoreboard-x').value = xscore;
-  localStorage.getItem('oscore'); 
+    enableButtons();
+ 
+    xscoreDisplay.innerHTML = 'X: ' + localStorage.getItem('xScore');
+    oscoreDisplay.innerHTML = 'O: ' + localStorage.getItem('oScore'); 
 }
 
 
